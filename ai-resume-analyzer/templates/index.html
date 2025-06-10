@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-body p-5">
+                <h1 class="mb-4 text-center">
+                    <i class="fas fa-robot me-2"></i>AI Resume Analyzer
+                </h1>
+                <p class="lead text-center mb-5">
+                    Upload your resume to get personalized learning resource recommendations based on your skills and experience.
+                </p>
+                
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-lightbulb me-2"></i>How it works
+                        </h5>
+                        <div class="row mt-4">
+                            <div class="col-md-4 text-center mb-3">
+                                <div class="h1 mb-3">
+                                    <i class="fas fa-file-upload text-primary"></i>
+                                </div>
+                                <h5>1. Upload Resume</h5>
+                                <p class="text-muted small">Upload your resume in PDF format</p>
+                            </div>
+                            <div class="col-md-4 text-center mb-3">
+                                <div class="h1 mb-3">
+                                    <i class="fas fa-search text-primary"></i>
+                                </div>
+                                <h5>2. AI Analysis</h5>
+                                <p class="text-muted small">Our AI extracts key skills and experience</p>
+                            </div>
+                            <div class="col-md-4 text-center mb-3">
+                                <div class="h1 mb-3">
+                                    <i class="fas fa-graduation-cap text-primary"></i>
+                                </div>
+                                <h5>3. Get Resources</h5>
+                                <p class="text-muted small">Receive personalized learning recommendations</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <form action="{{ url_for('analyze_resume') }}" method="POST" enctype="multipart/form-data" class="mb-4">
+                    <div class="mb-4">
+                        <label for="resume" class="form-label">Upload your resume (PDF only)</label>
+                        <div class="input-group">
+                            <input type="file" class="form-control" id="resume" name="resume" accept=".pdf" required>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-upload me-1"></i> Analyze Resume
+                            </button>
+                        </div>
+                        <div class="form-text">Maximum file size: 16MB</div>
+                    </div>
+                </form>
+                
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-shield-alt me-2"></i>Privacy Information
+                        </h5>
+                        <p class="card-text small">
+                            Your resume data is analyzed securely. We extract keywords to provide personalized recommendations without storing your personal information. Uploaded resumes are stored for your convenience only and can be deleted at any time.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
